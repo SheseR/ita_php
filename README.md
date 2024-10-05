@@ -41,13 +41,14 @@ Illuminate\Support\Facades\Route::get('/', [\App\Http\Controllers\HomeController
 ```
 
 2. CRUD: Create Read Update Delete actions
-Щоб побудувати простий CRUD, потрібні
-  сторінки (темплейти. блейди)
+   Щоб побудувати простий CRUD, потрібні
+ ```
+сторінки (темплейти. блейди)
        index - вивід всіх записів
        show -  вивід одно запису
        create - форма створення одного запису     (форма action на роут /store )
        edit   - форма редагування одного запису з данними запису (форма action на роут /update )
-  роути
+роути
    method GET на сторінки
        /index 
        /show/{id}
@@ -59,5 +60,6 @@ Illuminate\Support\Facades\Route::get('/', [\App\Http\Controllers\HomeController
        /update
    method DELETE
        /destroy 
-
-PS: щоб виконати методи POST UPDATE DELETE з html - використовуємо ФОРМУ з відповідним методом
+```
+PS: щоб виконати методи POST UPDATE DELETE з html - використовуємо ФОРМУ з відповідним методом,
+    Також не забуваємо про міграції
