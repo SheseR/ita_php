@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PostsController;
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('tasks.index');
@@ -28,4 +29,4 @@ Route::put('tasks/{task}/update', [TaskController::class, 'update'])
 //Route::put('tasks/{task}/show', [TaskController::class, 'show'])
 //    ->name('tasks.show');
 
-
+Route::resource('posts', PostsController::class);

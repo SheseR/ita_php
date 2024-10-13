@@ -1,65 +1,39 @@
-Lesson 2
+Lesson 3
 
-1. Використовуємо методи dump() , dd() для дебагу коду
-   dump(value) - виведе значення і скрипт продовжить виконнання. 
-   dd(value)   - виведе заначченя і скрип завершеться 
-2. Ключові слова namespace, use, Підключення класу
- При створенні нового класу (файлу). обовязково прописуємо namespace,
- прийнято вказувати namespace як шлях до файлу починаючи з app
-```php
-   <?php
-    namespace App\Http\Controllers;
-
-    class HomeController extends Controller
-    {
-    }
+1. Laravel команди artisan що використовувалися на уроці
+   
 ```
-Це дасть нам змогу називати класи(файли) з однаковою назвою, але namespace буде різний 
-Щоб викорисати клас де-інде декларуємо за допомогою use ПОВНА НАЗВА классу
-```php
-# routes/web.php
+Список команд
+php artisan list
 
-<?php
+Список параметрів(аргуменів) команди
+php artisan help {command}
 
-// підключаємо класс Route який знаходиться в namespace Illuminate\Support\Facades
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+Створити контролер з методами для круду, Реквест форм та моделі
+php artisan make:controller {NameController} --model={NameModel} --requests --resource
 
-Route::get('/', [HomeController::class, 'index'])
-    ->name('tasks.index');
+Створити міграцію
+php artisan make:migration {migration_name}
 
-```
-Тобто слідуюччий приклад еквівалентний попередньому
-```php
-# routes/web.php
+Запустити міграції
+php artisan migrate
 
-<?php
+Cтворити Seeder
+php artisan make:seeder {seed_name}
 
-Illuminate\Support\Facades\Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
-    ->name('tasks.index');
+Запустити(виконати) Seed
+php artisan db:seed {seed_name}
+
+Пабліш ларавел блейд пагінацій в проект, для кастомізації (якщо потрібно) 
+php artisan vendor:publish --tag=laravel-pagination
 
 ```
 
-2. CRUD: Create Read Update Delete actions
-   Щоб побудувати простий CRUD, потрібні
- ```
-сторінки (темплейти. блейди)
-       index - вивід всіх записів
-       show -  вивід одно запису
-       create - форма створення одного запису     (форма action на роут /store )
-       edit   - форма редагування одного запису з данними запису (форма action на роут /update )
-роути
-   method GET на сторінки
-       /index 
-       /show/{id}
-       /edit/{id}
-       /create
-   method POST
-       /store
-   method UPDATE
-       /update
-   method DELETE
-       /destroy 
+2. Заповнення фейковими даними таблицю (Модель і міграції уже встановлені)
+   Потрібні класи (див. PostSeeder/PostFactory)
 ```
-PS: щоб виконати методи POST UPDATE DELETE з html - використовуємо ФОРМУ з відповідним методом,
-    Також не забуваємо про міграції
+ app/database/seeders/{ModelSeeder.php}
+ app/database/factories/{ModelFactory.php}
+```
+
+3. Робота з блейд layouts. Ключові слова  @yield, @section, @extends
