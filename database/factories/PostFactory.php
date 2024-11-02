@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -19,12 +20,16 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $categoryIds = Category::all()->pluck('id')->toArray();
+        $categoryId = array_rand($categoryIds);
+
         return [
             'title' => fake()->title(),
             'preview' => fake()->text(200),
             'text' => fake()->paragraph(10),
             'author' => fake()->name(),
             'published' => fake()->boolean(),
+            'category_id' => $categoryId
         ];
     }
 }
