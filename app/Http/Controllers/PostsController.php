@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 
 class PostsController extends Controller
 {
@@ -38,6 +40,8 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
+        dd($post->tags()->get());
+
         return view('posts.show', ['post' => $post]);
     }
 

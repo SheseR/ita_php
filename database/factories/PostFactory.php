@@ -21,7 +21,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $categoryIds = Category::all()->pluck('id')->toArray();
-        $categoryId = array_rand($categoryIds);
+        $categoryId = $categoryIds[array_rand($categoryIds)];
 
         return [
             'title' => fake()->title(),
